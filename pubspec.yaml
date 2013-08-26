@@ -1,0 +1,7 @@
+name: fastweb
+version: 0.0.1
+author: Jan Voracek <jan@voracek.net>
+description: Sinatra-like webserver
+homepage: https://github.com/JanVoracek/fastweb
+dependencies:
+  unittest: 0.6.14+2
