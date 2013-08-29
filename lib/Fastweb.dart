@@ -12,6 +12,7 @@ part 'routing/Router.dart';
 class Fastweb {
   Router _router = new Router();
   List<Middleware> _middlewares = new List();
+  bool _autoUseRouter;
 
   Router get router => _router;
 
@@ -31,10 +32,12 @@ class Fastweb {
   }
 
   Route _createRoute(String method, String url) {
+    _autoUseRouter = true;
     return _router.createRoute(method, url);
   }
 
   run(Request request, Response response) {
+    if(_autoUseRouter && !_middlewares.contains(_router)) use(_router);
     if(_middlewares.length > 0) _middlewares.first._runMiddlewareChain(request, response);
   }
 
